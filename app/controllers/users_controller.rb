@@ -60,17 +60,16 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
 
-    def logon
-      session[:current_user] = @user.id
-      redirect_to users_path, notice: "Welcome #{@user.name}. You are logged in."
-    end
-    
-    def logoff
-      session.delete(:current_user)
-      redirect_to users_path, notice: "You have logged off."
-    end
-
+  def logon
+    session[:current_user] = @user.id
+    redirect_to users_path, notice: "Welcome #{@user.name}. You are logged in."
+  end
+  
+  def logoff
+    session.delete(:current_user)
+    redirect_to users_path, notice: "You have logged off."
   end
 
   private
